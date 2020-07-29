@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Nineko&#39;s Blog</title>
+        <link>https://nineko.github.io</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Wed, 29 Jul 2020 11:01:28 +0800</pubDate>
+        <lastBuildDate>Wed, 29 Jul 2020 11:01:28 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://nineko.github.io/2020/07/29/hello-world/</guid>
+            <title>Hello World</title>
+            <link>https://nineko.github.io/2020/07/29/hello-world/</link>
+            <pubDate>Wed, 29 Jul 2020 11:01:28 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
+&lt;p&gt;&amp;lt;!--hexoPostRenderEscape:&amp;lt;figure class=&amp;quot;highlight bash&amp;quot;&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;quot;gutter&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=&amp;quot;code&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;$ hexo new &amp;lt;span class=&amp;quot;string&amp;quot;&amp;gt;&amp;quot;My New Post&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;lt;/figure&amp;gt;:hexoPostRenderEscape--&amp;gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
+&lt;p&gt;&amp;lt;!--hexoPostRenderEscape:&amp;lt;figure class=&amp;quot;highlight bash&amp;quot;&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;quot;gutter&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=&amp;quot;code&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;$ hexo server&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;lt;/figure&amp;gt;:hexoPostRenderEscape--&amp;gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
+&lt;p&gt;&amp;lt;!--hexoPostRenderEscape:&amp;lt;figure class=&amp;quot;highlight bash&amp;quot;&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;quot;gutter&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=&amp;quot;code&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;$ hexo generate&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;lt;/figure&amp;gt;:hexoPostRenderEscape--&amp;gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
+&lt;p&gt;&amp;lt;!--hexoPostRenderEscape:&amp;lt;figure class=&amp;quot;highlight bash&amp;quot;&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=&amp;quot;gutter&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=&amp;quot;code&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span class=&amp;quot;line&amp;quot;&amp;gt;$ hexo deploy&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;lt;/figure&amp;gt;:hexoPostRenderEscape--&amp;gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
