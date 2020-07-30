@@ -4,10 +4,10 @@
     <title>Nineko&#39;s Blog • Posts by &#34;machine learning&#34; category</title>
     <link href="https://nineko.github.io" />
     <updated>2020-07-30T04:44:44.000Z</updated>
+    <category term="QT" />
     <category term="DNN" />
     <category term="Computer Vision" />
     <category term="Pose Estimation" />
-    <category term="QT" />
     <entry>
         <id>https://nineko.github.io/2020/07/30/School-Project-PSO/</id>
         <title>[School Project] Particle Swarm Optimization</title>
