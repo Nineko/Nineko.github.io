@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Nineko&#39;s Blog • Posts by &#34;machine learning&#34; category</title>
+        <link>https://nineko.github.io</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Thu, 30 Jul 2020 12:44:44 +0800</pubDate>
+        <lastBuildDate>Thu, 30 Jul 2020 12:44:44 +0800</lastBuildDate>
+        <category>DNN</category>
+        <category>Computer Vision</category>
+        <category>Pose Estimation</category>
+        <category>QT</category>
+        <item>
+            <guid isPermalink="true">https://nineko.github.io/2020/07/30/School-Project-PSO/</guid>
+            <title>[School Project] Particle Swarm Optimization</title>
+            <link>https://nineko.github.io/2020/07/30/School-Project-PSO/</link>
+            <category>QT</category>
+            <pubDate>Thu, 30 Jul 2020 12:44:44 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;This program simulates the process which finding the best solution of the Ackley function with particle swarm optimization method&lt;/p&gt;
+&lt;p&gt;[*]Develop in qt5.9&lt;br&gt;
+&lt;a href=&#34;https://github.com/Nineko/School-Project_Particle-Swarm-Optimization&#34;&gt;Github Link&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Object function : Ackley function&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;equ.png&#34; alt=&#34;image&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;Demo.gif&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h1&gt;Configures&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;The number of partical : (Dedault) 30&lt;/li&gt;
+&lt;li&gt;Inertia weight : (Dedault) 0.5&lt;/li&gt;
+&lt;li&gt;Personal influence : (Dedault) 0.5&lt;/li&gt;
+&lt;li&gt;Social influence : (Dedault) 0.5&lt;/li&gt;
+&lt;li&gt;Group size : (Dedault) 10&lt;/li&gt;
+&lt;li&gt;Termination condition : (Dedault) 0.000001&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;config.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/</guid>
+            <title>[School Project] Genetic Algorithm</title>
+            <link>https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/</link>
+            <category>QT</category>
+            <pubDate>Thu, 30 Jul 2020 11:20:36 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;This program simulates the process which finding the best solution of the Ackley function with genetic algorithm&lt;/p&gt;
+&lt;p&gt;[*]Develop in qt5.9&lt;br&gt;
+&lt;a href=&#34;https://github.com/Nineko/School-Project_Genetic-Algorithm&#34;&gt;Github Link&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Object function : Ackley function&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;equ.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1&gt;Configures&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Initial population size: (Dedault) 50&lt;/li&gt;
+&lt;li&gt;Probability of performing crossover : (Dedault) 1.0&lt;/li&gt;
+&lt;li&gt;Probability of mutation : (Dedault) 0.5&lt;/li&gt;
+&lt;li&gt;Decode mode : binary / real&lt;/li&gt;
+&lt;li&gt;Crossover mode : single / double / multiple&lt;/li&gt;
+&lt;li&gt;Pooling size : (Dedault) 40&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;conf.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

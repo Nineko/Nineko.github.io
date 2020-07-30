@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Nineko's Blog • All posts by \"other\" category",
+    "description": "",
+    "home_page_url": "https://nineko.github.io",
+    "items": [
+        {
+            "id": "https://nineko.github.io/2020/07/30/CAD-Simulator/",
+            "url": "https://nineko.github.io/2020/07/30/CAD-Simulator/",
+            "title": "CAD Simulator",
+            "date_published": "2020-07-30T05:00:15.000Z",
+            "content_html": "<p>讀取.dxf 檔案格式，產生渲染合成影像作訓練資料使用</p>\n<p>[*]Develop in QT5.9<br>\n<a href=\"https://github.com/Nineko/CAD-Simulator\">Github Link</a></p>\n<p><img src=\"clamp.png\" alt=\"image\"></p>\n<h1>虛擬相機以球座標系定義</h1>\n<p>物體於圓心，虛擬相機的位置將由 1) 物體與相機距離 <code>r</code>  2) 天頂角 <code>Theta</code>  3) 方位角 <code>Phi</code>  三個參數來設定<br>\n<img src=\"%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB.png\" alt=\"image\"></p>\n<h1>整體介面</h1>\n<p>可變參數</p>\n<ul>\n<li>Theta angle</li>\n<li>Phi angle</li>\n<li>In-plane rotate angle</li>\n<li>Camera shift(x/y direction)</li>\n<li>Light direction</li>\n<li>batch process setting<br>\n<img src=\"CAD_UI.png\" alt=\"image\"></li>\n</ul>\n",
+            "tags": [
+                "QT"
+            ]
+        }
+    ]
+}

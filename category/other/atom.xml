@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://nineko.github.io</id>
+    <title>Nineko&#39;s Blog • Posts by &#34;other&#34; category</title>
+    <link href="https://nineko.github.io" />
+    <updated>2020-07-30T05:00:15.000Z</updated>
+    <category term="DNN" />
+    <category term="Computer Vision" />
+    <category term="Pose Estimation" />
+    <category term="QT" />
+    <entry>
+        <id>https://nineko.github.io/2020/07/30/CAD-Simulator/</id>
+        <title>CAD Simulator</title>
+        <link rel="alternate" href="https://nineko.github.io/2020/07/30/CAD-Simulator/"/>
+        <content type="html">&lt;p&gt;讀取.dxf 檔案格式，產生渲染合成影像作訓練資料使用&lt;/p&gt;
+&lt;p&gt;[*]Develop in QT5.9&lt;br&gt;
+&lt;a href=&#34;https://github.com/Nineko/CAD-Simulator&#34;&gt;Github Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;clamp.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h1&gt;虛擬相機以球座標系定義&lt;/h1&gt;
+&lt;p&gt;物體於圓心，虛擬相機的位置將由 1) 物體與相機距離 &lt;code&gt;r&lt;/code&gt;  2) 天頂角 &lt;code&gt;Theta&lt;/code&gt;  3) 方位角 &lt;code&gt;Phi&lt;/code&gt;  三個參數來設定&lt;br&gt;
+&lt;img src=&#34;%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
+&lt;h1&gt;整體介面&lt;/h1&gt;
+&lt;p&gt;可變參數&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Theta angle&lt;/li&gt;
+&lt;li&gt;Phi angle&lt;/li&gt;
+&lt;li&gt;In-plane rotate angle&lt;/li&gt;
+&lt;li&gt;Camera shift(x/y direction)&lt;/li&gt;
+&lt;li&gt;Light direction&lt;/li&gt;
+&lt;li&gt;batch process setting&lt;br&gt;
+&lt;img src=&#34;CAD_UI.png&#34; alt=&#34;image&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="QT" />
+        <updated>2020-07-30T05:00:15.000Z</updated>
+    </entry>
+</feed>

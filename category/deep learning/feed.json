@@ -1,6 +1,6 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "Nineko's Blog",
+    "title": "Nineko's Blog • All posts by \"deep learning\" category",
     "description": "",
     "home_page_url": "https://nineko.github.io",
     "items": [
@@ -14,36 +14,6 @@
                 "DNN",
                 "Computer Vision",
                 "Pose Estimation"
-            ]
-        },
-        {
-            "id": "https://nineko.github.io/2020/07/30/CAD-Simulator/",
-            "url": "https://nineko.github.io/2020/07/30/CAD-Simulator/",
-            "title": "CAD Simulator",
-            "date_published": "2020-07-30T05:00:15.000Z",
-            "content_html": "<p>讀取.dxf 檔案格式，產生渲染合成影像作訓練資料使用</p>\n<p>[*]Develop in QT5.9<br>\n<a href=\"https://github.com/Nineko/CAD-Simulator\">Github Link</a></p>\n<p><img src=\"clamp.png\" alt=\"image\"></p>\n<h1>虛擬相機以球座標系定義</h1>\n<p>物體於圓心，虛擬相機的位置將由 1) 物體與相機距離 <code>r</code>  2) 天頂角 <code>Theta</code>  3) 方位角 <code>Phi</code>  三個參數來設定<br>\n<img src=\"%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB.png\" alt=\"image\"></p>\n<h1>整體介面</h1>\n<p>可變參數</p>\n<ul>\n<li>Theta angle</li>\n<li>Phi angle</li>\n<li>In-plane rotate angle</li>\n<li>Camera shift(x/y direction)</li>\n<li>Light direction</li>\n<li>batch process setting<br>\n<img src=\"CAD_UI.png\" alt=\"image\"></li>\n</ul>\n",
-            "tags": [
-                "QT"
-            ]
-        },
-        {
-            "id": "https://nineko.github.io/2020/07/30/School-Project-PSO/",
-            "url": "https://nineko.github.io/2020/07/30/School-Project-PSO/",
-            "title": "[School Project] Particle Swarm Optimization",
-            "date_published": "2020-07-30T04:44:44.000Z",
-            "content_html": "<p>This program simulates the process which finding the best solution of the Ackley function with particle swarm optimization method</p>\n<p>[*]Develop in qt5.9<br>\n<a href=\"https://github.com/Nineko/School-Project_Particle-Swarm-Optimization\">Github Link</a></p>\n<h1>Object function : Ackley function</h1>\n<p><img src=\"equ.png\" alt=\"image\"><br>\n<img src=\"Demo.gif\" alt=\"image\"></p>\n<h1>Configures</h1>\n<ul>\n<li>The number of partical : (Dedault) 30</li>\n<li>Inertia weight : (Dedault) 0.5</li>\n<li>Personal influence : (Dedault) 0.5</li>\n<li>Social influence : (Dedault) 0.5</li>\n<li>Group size : (Dedault) 10</li>\n<li>Termination condition : (Dedault) 0.000001</li>\n</ul>\n<p><img src=\"config.png\" alt=\"image\"></p>\n",
-            "tags": [
-                "QT"
-            ]
-        },
-        {
-            "id": "https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/",
-            "url": "https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/",
-            "title": "[School Project] Genetic Algorithm",
-            "date_published": "2020-07-30T03:20:36.000Z",
-            "content_html": "<p>This program simulates the process which finding the best solution of the Ackley function with genetic algorithm</p>\n<p>[*]Develop in qt5.9<br>\n<a href=\"https://github.com/Nineko/School-Project_Genetic-Algorithm\">Github Link</a></p>\n<h1>Object function : Ackley function</h1>\n<p><img src=\"equ.png\" alt=\"\"></p>\n<h1>Configures</h1>\n<ul>\n<li>Initial population size: (Dedault) 50</li>\n<li>Probability of performing crossover : (Dedault) 1.0</li>\n<li>Probability of mutation : (Dedault) 0.5</li>\n<li>Decode mode : binary / real</li>\n<li>Crossover mode : single / double / multiple</li>\n<li>Pooling size : (Dedault) 40</li>\n</ul>\n<p><img src=\"conf.png\" alt=\"\"></p>\n",
-            "tags": [
-                "QT"
             ]
         }
     ]

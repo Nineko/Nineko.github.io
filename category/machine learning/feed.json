@@ -1,0 +1,28 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Nineko's Blog • All posts by \"machine learning\" category",
+    "description": "",
+    "home_page_url": "https://nineko.github.io",
+    "items": [
+        {
+            "id": "https://nineko.github.io/2020/07/30/School-Project-PSO/",
+            "url": "https://nineko.github.io/2020/07/30/School-Project-PSO/",
+            "title": "[School Project] Particle Swarm Optimization",
+            "date_published": "2020-07-30T04:44:44.000Z",
+            "content_html": "<p>This program simulates the process which finding the best solution of the Ackley function with particle swarm optimization method</p>\n<p>[*]Develop in qt5.9<br>\n<a href=\"https://github.com/Nineko/School-Project_Particle-Swarm-Optimization\">Github Link</a></p>\n<h1>Object function : Ackley function</h1>\n<p><img src=\"equ.png\" alt=\"image\"><br>\n<img src=\"Demo.gif\" alt=\"image\"></p>\n<h1>Configures</h1>\n<ul>\n<li>The number of partical : (Dedault) 30</li>\n<li>Inertia weight : (Dedault) 0.5</li>\n<li>Personal influence : (Dedault) 0.5</li>\n<li>Social influence : (Dedault) 0.5</li>\n<li>Group size : (Dedault) 10</li>\n<li>Termination condition : (Dedault) 0.000001</li>\n</ul>\n<p><img src=\"config.png\" alt=\"image\"></p>\n",
+            "tags": [
+                "QT"
+            ]
+        },
+        {
+            "id": "https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/",
+            "url": "https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/",
+            "title": "[School Project] Genetic Algorithm",
+            "date_published": "2020-07-30T03:20:36.000Z",
+            "content_html": "<p>This program simulates the process which finding the best solution of the Ackley function with genetic algorithm</p>\n<p>[*]Develop in qt5.9<br>\n<a href=\"https://github.com/Nineko/School-Project_Genetic-Algorithm\">Github Link</a></p>\n<h1>Object function : Ackley function</h1>\n<p><img src=\"equ.png\" alt=\"\"></p>\n<h1>Configures</h1>\n<ul>\n<li>Initial population size: (Dedault) 50</li>\n<li>Probability of performing crossover : (Dedault) 1.0</li>\n<li>Probability of mutation : (Dedault) 0.5</li>\n<li>Decode mode : binary / real</li>\n<li>Crossover mode : single / double / multiple</li>\n<li>Pooling size : (Dedault) 40</li>\n</ul>\n<p><img src=\"conf.png\" alt=\"\"></p>\n",
+            "tags": [
+                "QT"
+            ]
+        }
+    ]
+}
