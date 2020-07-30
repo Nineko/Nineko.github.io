@@ -5,11 +5,19 @@
     "home_page_url": "https://nineko.github.io",
     "items": [
         {
+            "id": "https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/",
+            "url": "https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/",
+            "title": "[School Project] Genetic Algorithm",
+            "date_published": "2020-07-30T03:20:36.000Z",
+            "content_html": "<p>This program simulates the process which finding the best solution of the Ackley function with genetic algorithm</p>\n<p>[*]Develop in qt5.9<br>\n<a href=\"https://github.com/Nineko/School-Project_Genetic-Algorithm\">Github Link</a></p>\n<h2 id=\"object-function-ackley-function\"><a class=\"markdownIt-Anchor\" href=\"#object-function-ackley-function\">#</a> Object function : Ackley function</h2>\n<p><img src=\"equ.png\" alt=\"\"></p>\n<h2 id=\"configures\"><a class=\"markdownIt-Anchor\" href=\"#configures\">#</a> Configures</h2>\n<ul>\n<li>Initial population size: (Dedault) 50</li>\n<li>Probability of performing crossover : (Dedault) 1.0</li>\n<li>Probability of mutation : (Dedault) 0.5</li>\n<li>Decode mode : binary / real</li>\n<li>Crossover mode : single / double / multiple</li>\n<li>Pooling size : (Dedault) 40</li>\n</ul>\n<p><img src=\"conf.PNG\" alt=\"\"></p>\n",
+            "tags": []
+        },
+        {
             "id": "https://nineko.github.io/2020/07/29/Autoencoder/",
             "url": "https://nineko.github.io/2020/07/29/Autoencoder/",
             "title": "Autoencoder",
             "date_published": "2020-07-29T08:09:48.000Z",
-            "content_html": "<p><img src=\"/2020/07/29/Autoencoder/test.jpeg\" alt=\"example\"></p>\n",
+            "content_html": "<p><img src=\"/test.jpeg\" alt=\"example\"></p>\n",
             "tags": []
         },
         {

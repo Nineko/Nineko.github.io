@@ -3,12 +3,34 @@
     <id>https://nineko.github.io</id>
     <title>Nineko&#39;s Blog</title>
     <link href="https://nineko.github.io" />
-    <updated>2020-07-29T08:09:48.000Z</updated>
+    <updated>2020-07-30T03:20:36.000Z</updated>
+    <entry>
+        <id>https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/</id>
+        <title>[School Project] Genetic Algorithm</title>
+        <link rel="alternate" href="https://nineko.github.io/2020/07/30/School-Project-Genetic-Algorithm/"/>
+        <content type="html">&lt;p&gt;This program simulates the process which finding the best solution of the Ackley function with genetic algorithm&lt;/p&gt;
+&lt;p&gt;[*]Develop in qt5.9&lt;br&gt;
+&lt;a href=&#34;https://github.com/Nineko/School-Project_Genetic-Algorithm&#34;&gt;Github Link&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;object-function-ackley-function&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#object-function-ackley-function&#34;&gt;#&lt;/a&gt; Object function : Ackley function&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;equ.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;configures&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#configures&#34;&gt;#&lt;/a&gt; Configures&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Initial population size: (Dedault) 50&lt;/li&gt;
+&lt;li&gt;Probability of performing crossover : (Dedault) 1.0&lt;/li&gt;
+&lt;li&gt;Probability of mutation : (Dedault) 0.5&lt;/li&gt;
+&lt;li&gt;Decode mode : binary / real&lt;/li&gt;
+&lt;li&gt;Crossover mode : single / double / multiple&lt;/li&gt;
+&lt;li&gt;Pooling size : (Dedault) 40&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;conf.PNG&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</content>
+        <updated>2020-07-30T03:20:36.000Z</updated>
+    </entry>
     <entry>
         <id>https://nineko.github.io/2020/07/29/Autoencoder/</id>
         <title>Autoencoder</title>
         <link rel="alternate" href="https://nineko.github.io/2020/07/29/Autoencoder/"/>
-        <content type="html">&lt;p&gt;&lt;img src=&#34;/2020/07/29/Autoencoder/test.jpeg&#34; alt=&#34;example&#34;&gt;&lt;/p&gt;
+        <content type="html">&lt;p&gt;&lt;img src=&#34;/test.jpeg&#34; alt=&#34;example&#34;&gt;&lt;/p&gt;
 </content>
         <updated>2020-07-29T08:09:48.000Z</updated>
     </entry>
