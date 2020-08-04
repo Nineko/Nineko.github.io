@@ -17,18 +17,18 @@
 &lt;h1&gt;論文連結&lt;/h1&gt;  
 &lt;p&gt;&lt;a href=&#34;https://drive.google.com/open?id=14RATn-h3gV4wIrBbZ2rxjERyxK64EEQM&#34;&gt;https://drive.google.com/open?id=14RATn-h3gV4wIrBbZ2rxjERyxK64EEQM&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://github.com/Nineko/Deep-Learning_Training-Deep-Networks-with-Synthetic-Data-for-Textureless&#34;&gt;Github Link&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;簡述&lt;/h1&gt;    
+&lt;h1&gt;簡述&lt;/h1&gt;
 &lt;h2&gt;問題定義&lt;/h2&gt;
-　　在這個研究中想要解決在工業應用上因傳統視覺伺服的不足而導入深度學習時，所發生的種種問題。
-我們假設視覺系統為一個手眼系統(左圖)，所以能夠以物體為圓心定義出一個球座標系(右圖)
+&lt;p&gt;在這個研究中想要解決在工業應用上因傳統視覺伺服的不足而導入深度學習時，所發生的種種問題。&lt;br&gt;
+我們假設視覺系統為一個手眼系統 (左圖)，所以能夠以物體為圓心定義出一個球座標系 (右圖)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;eyeonhand.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;根據此座標系，在我們的研究中主要考慮三個變量 : In-plane Rotation 、 Theta 、 Phi&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;ThreePara.gif&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;h2&gt;CAD Simulator&lt;/h2&gt;
-　　同時為了解決訓練資料取得及標定不易的問題，我們撰寫了使用OpenGL並在QT上進行開發的CAD模型模擬器，詳細可以前往我的 CAD-Simulator 專案(https://github.com/Nineko/CAD-Simulator)
+&lt;p&gt;同時為了解決訓練資料取得及標定不易的問題，我們撰寫了使用 OpenGL 並在 QT 上進行開發的 CAD 模型模擬器，詳細可以前往我的 CAD-Simulator 專案 (&lt;a href=&#34;https://github.com/Nineko/CAD-Simulator&#34;&gt;https://github.com/Nineko/CAD-Simulator&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;CAD%E6%A8%A1%E5%9E%8B%E7%95%8C%E9%9D%A2.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;h2&gt;測試結果&lt;/h2&gt;
-　　在本研究中，我們利用前述的模擬器產生訓練資料進行訓練，並以相同的方式產生測試集對三種物體進行測試，每種物體都產生了約16000張圖片進行測試
+&lt;p&gt;在本研究中，我們利用前述的模擬器產生訓練資料進行訓練，並以相同的方式產生測試集對三種物體進行測試，每種物體都產生了約 16000 張圖片進行測試&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;class.jpg&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;測試時分成兩個部分，首先為分辨物體及物體定位的結果 :&lt;/p&gt;
 &lt;table&gt;

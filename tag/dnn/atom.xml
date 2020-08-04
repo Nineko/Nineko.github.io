@@ -3,11 +3,25 @@
     <id>https://nineko.github.io</id>
     <title>Nineko&#39;s Blog • Posts by &#34;dnn&#34; tag</title>
     <link href="https://nineko.github.io" />
-    <updated>2020-08-03T07:55:22.000Z</updated>
+    <updated>2020-08-04T03:15:06.000Z</updated>
     <category term="QT" />
     <category term="DNN" />
     <category term="Computer Vision" />
     <category term="Pose Estimation" />
+    <entry>
+        <id>https://nineko.github.io/2020/08/04/Note-Multi-Scale/</id>
+        <title>[筆記]序列模型(2)-多尺度架構</title>
+        <link rel="alternate" href="https://nineko.github.io/2020/08/04/Note-Multi-Scale/"/>
+        <content type="html">&lt;h1&gt;目錄&lt;/h1&gt;
+&lt;p&gt;基本序列模型&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多尺度架構&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;捷徑架構&lt;/p&gt;
+&lt;h1&gt;多尺度架構&lt;/h1&gt;
+&lt;p&gt;  多尺度架構能夠在 GoogLeNet 中的 Inception 架構中廣泛看到，其概念想法為利用不同卷積核大小的卷積層來給予網路更多的選擇去擷取適當的特徵，&lt;/p&gt;
+</content>
+        <category term="DNN" />
+        <updated>2020-08-04T03:15:06.000Z</updated>
+    </entry>
     <entry>
         <id>https://nineko.github.io/2020/08/03/Note-BasicSequenceModel/</id>
         <title>[筆記]序列模型(1)-基本序列模型</title>
@@ -24,6 +38,7 @@
 &lt;h3&gt;全連接層&lt;/h3&gt;
 &lt;p&gt;在這個筆記裡，範例皆為 Keras 實做版本，Keras 版本為 2.4.3 ，基底 Tensorflow 版本為 2.3.0 。&lt;/p&gt;
 &lt;p&gt;假設我們想要建構一個輸入長度為 100 的向量，經過兩層輸出為 50 的隱藏層後，最後輸出長度為 10 的向量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;M1.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在 Keras 中，我們可以使用很簡單的方式來建構一個序列模型。&lt;/p&gt;
 &lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; tensorflow &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; tf&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; keras.models &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; Model&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; keras.layers &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; Input,Dense&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; keras &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; backend &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; K&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;SequenceModel&lt;/span&gt;():&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 輸入層&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    model_input = Input(shape=(&lt;span class=&#34;number&#34;&gt;100&lt;/span&gt;), name=&lt;span class=&#34;string&#34;&gt;&amp;#x27;input&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 隱藏層 1 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    hidden = Dense(&lt;span class=&#34;number&#34;&gt;50&lt;/span&gt;, activation=&lt;span class=&#34;string&#34;&gt;&amp;#x27;sigmoid&amp;#x27;&lt;/span&gt;,name=&lt;span class=&#34;string&#34;&gt;&amp;quot;hidden_1&amp;quot;&lt;/span&gt;)(model_input)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 隱藏層 2 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    hidden = Dense(&lt;span class=&#34;number&#34;&gt;50&lt;/span&gt;, activation=&lt;span class=&#34;string&#34;&gt;&amp;#x27;sigmoid&amp;#x27;&lt;/span&gt;,name=&lt;span class=&#34;string&#34;&gt;&amp;quot;hidden_2&amp;quot;&lt;/span&gt;)(hidden)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 輸出層 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    model_output = Dense(&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;, activation=&lt;span class=&#34;string&#34;&gt;&amp;#x27;sigmoid&amp;#x27;&lt;/span&gt;,name=&lt;span class=&#34;string&#34;&gt;&amp;quot;output&amp;quot;&lt;/span&gt;)(hidden)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    model = Model(inputs=[model_input], outputs=[model_output])&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; model&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;  可以看到由 Keras 建構只需要專心建構網路的架構，而不需要做 Weight 及 Bias 的數量及初始化定義，它會以預設的參數進行建構，若要修改也可以帶入引數進行設定。&lt;/p&gt;
@@ -32,6 +47,7 @@
 &lt;h3&gt;卷積層&lt;/h3&gt;
 &lt;p&gt;  若要建構一個 DNN ，卷積層是必須的，與全連接層相同的做法，只是呼叫的函式不同而已。&lt;/p&gt;
 &lt;p&gt;  在接下來的範例中，輸入張量為 100x100x3 ，經過兩層 50 個卷積核為 3x3 ，Stride 為 2 ，不使用 Padding 的卷積層後，進行 Flatten ，最後再接入向量長度為 10 的輸出層。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;M2.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; tensorflow &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; tf&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; keras.models &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; Model&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; keras.layers &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; Input,Dense,Conv2D&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; keras &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; backend &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; K&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;SequenceModel&lt;/span&gt;():&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 輸入層&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    model_input = Input(shape=(&lt;span class=&#34;number&#34;&gt;100&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;100&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;), name=&lt;span class=&#34;string&#34;&gt;&amp;#x27;input&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 隱藏層 1 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    hidden = Conv2D(&lt;span class=&#34;number&#34;&gt;50&lt;/span&gt;, (&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;), activation=&lt;span class=&#34;string&#34;&gt;&amp;#x27;relu&amp;#x27;&lt;/span&gt;, padding=&lt;span class=&#34;string&#34;&gt;&amp;#x27;valid&amp;#x27;&lt;/span&gt;,name=&lt;span class=&#34;string&#34;&gt;&amp;#x27;hidden_1&amp;#x27;&lt;/span&gt;)(model_input)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 隱藏層 2 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    hidden = Conv2D(&lt;span class=&#34;number&#34;&gt;50&lt;/span&gt;, (&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;), activation=&lt;span class=&#34;string&#34;&gt;&amp;#x27;relu&amp;#x27;&lt;/span&gt;, padding=&lt;span class=&#34;string&#34;&gt;&amp;#x27;valid&amp;#x27;&lt;/span&gt;,name=&lt;span class=&#34;string&#34;&gt;&amp;#x27;hidden_2&amp;#x27;&lt;/span&gt;)(model_input)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# Flatten&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    Flatten_layer = Flatten(name=&lt;span class=&#34;string&#34;&gt;&amp;#x27;flatten&amp;#x27;&lt;/span&gt;)(hidden)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 輸出層 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    model_output = Dense(&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;, activation=&lt;span class=&#34;string&#34;&gt;&amp;#x27;sigmoid&amp;#x27;&lt;/span&gt;,name=&lt;span class=&#34;string&#34;&gt;&amp;quot;output&amp;quot;&lt;/span&gt;)(Flatten_layer)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    model = Model(inputs=[model_input], outputs=[model_output])&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; model&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;同樣，這只是最基本的應用，若要更進階的使用請詳看 &lt;a href=&#34;https://keras.io/api/layers/convolution_layers/&#34;&gt;Keras 手冊&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;  以上，我們已經知道該怎麼建構卷積層及全連接層，使用這兩者已經可以建構一個影像辨識的應用，像是一開始的 AlexNet 及 VGG 系列都是使用單純的卷積加上全連接層建構而成的，接下來，你可以建構自己的架構嘗試進行影像辨識，可以使用&lt;a href=&#34;http://yann.lecun.com/exdb/mnist/&#34;&gt;手寫辨識 MINST&lt;/a&gt; 或是 &lt;a href=&#34;https://www.kaggle.com/c/dogs-vs-cats&#34;&gt;Kaggle 的 Dogs v.s Cats&lt;/a&gt; 進行練習。&lt;/p&gt;
@@ -48,18 +64,18 @@
 &lt;h1&gt;論文連結&lt;/h1&gt;  
 &lt;p&gt;&lt;a href=&#34;https://drive.google.com/open?id=14RATn-h3gV4wIrBbZ2rxjERyxK64EEQM&#34;&gt;https://drive.google.com/open?id=14RATn-h3gV4wIrBbZ2rxjERyxK64EEQM&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;https://github.com/Nineko/Deep-Learning_Training-Deep-Networks-with-Synthetic-Data-for-Textureless&#34;&gt;Github Link&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;簡述&lt;/h1&gt;    
+&lt;h1&gt;簡述&lt;/h1&gt;
 &lt;h2&gt;問題定義&lt;/h2&gt;
-　　在這個研究中想要解決在工業應用上因傳統視覺伺服的不足而導入深度學習時，所發生的種種問題。
-我們假設視覺系統為一個手眼系統(左圖)，所以能夠以物體為圓心定義出一個球座標系(右圖)
+&lt;p&gt;在這個研究中想要解決在工業應用上因傳統視覺伺服的不足而導入深度學習時，所發生的種種問題。&lt;br&gt;
+我們假設視覺系統為一個手眼系統 (左圖)，所以能夠以物體為圓心定義出一個球座標系 (右圖)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;eyeonhand.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;根據此座標系，在我們的研究中主要考慮三個變量 : In-plane Rotation 、 Theta 、 Phi&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;ThreePara.gif&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;h2&gt;CAD Simulator&lt;/h2&gt;
-　　同時為了解決訓練資料取得及標定不易的問題，我們撰寫了使用OpenGL並在QT上進行開發的CAD模型模擬器，詳細可以前往我的 CAD-Simulator 專案(https://github.com/Nineko/CAD-Simulator)
+&lt;p&gt;同時為了解決訓練資料取得及標定不易的問題，我們撰寫了使用 OpenGL 並在 QT 上進行開發的 CAD 模型模擬器，詳細可以前往我的 CAD-Simulator 專案 (&lt;a href=&#34;https://github.com/Nineko/CAD-Simulator&#34;&gt;https://github.com/Nineko/CAD-Simulator&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;CAD%E6%A8%A1%E5%9E%8B%E7%95%8C%E9%9D%A2.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;h2&gt;測試結果&lt;/h2&gt;
-　　在本研究中，我們利用前述的模擬器產生訓練資料進行訓練，並以相同的方式產生測試集對三種物體進行測試，每種物體都產生了約16000張圖片進行測試
+&lt;p&gt;在本研究中，我們利用前述的模擬器產生訓練資料進行訓練，並以相同的方式產生測試集對三種物體進行測試，每種物體都產生了約 16000 張圖片進行測試&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;class.jpg&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;測試時分成兩個部分，首先為分辨物體及物體定位的結果 :&lt;/p&gt;
 &lt;table&gt;
