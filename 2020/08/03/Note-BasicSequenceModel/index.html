@@ -143,14 +143,11 @@
 <p>多尺度架構</p>
 <p>捷徑架構</p>
 <h1>基本序列模型</h1>
-<hr>
 <p>  序列模型為建構深度學習網路時最直觀也最簡便的方式，在大多數時候，序列模型往往能夠讓你在解決問題上提供一個初步的解決方案。</p>
 <p>不過儘管它如此單純，依舊值得好好研究，在本篇中將會從最基本的開始說明，也就是沒有任何特別操作，單純一層疊一層的方式來建構深度學習網路。</p>
 <p>這種方式在初期被大量使用，它方便架設，也很容易理解，但是它因簡單的架構，無法處理太過於複雜的特徵，也沒有任何機制去降低計算量，可說是有利有弊。</p>
 <h2>建構</h2>
-<hr>
 <h3>全連接層</h3>
-<hr>
 <p>在這個筆記裡，範例皆為 Keras 實做版本，Keras 版本為 2.4.3 ，基底 Tensorflow 版本為 2.3.0 。</p>
 <p>假設我們想要建構一個輸入長度為 100 的向量，經過兩層輸出為 50 的隱藏層後，最後輸出長度為 10 的向量。</p>
 <p>在 Keras 中，我們可以使用很簡單的方式來建構一個序列模型。</p>
@@ -159,7 +156,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">keras.layers.Dense(units, </span><br><span class="line">                   activation=<span class="literal">None</span>, </span><br><span class="line">                   use_bias=<span class="literal">True</span>, </span><br><span class="line">                   kernel_initializer=<span class="string">&#x27;glorot_uniform&#x27;</span>, bias_initializer=<span class="string">&#x27;zeros&#x27;</span>, </span><br><span class="line">                   kernel_regularizer=<span class="literal">None</span>, </span><br><span class="line">                   bias_regularizer=<span class="literal">None</span>, </span><br><span class="line">                   activity_regularizer=<span class="literal">None</span>, </span><br><span class="line">                   kernel_constraint=<span class="literal">None</span>, </span><br><span class="line">                   bias_constraint=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <p>若要了解更詳細的設定可以查看 <a target="_blank" rel="noopener" href="https://keras.io/api/layers/core_layers/dense/">Keras 手冊</a></p>
 <h3>卷積層</h3>
-<hr>
 <p>  若要建構一個 DNN ，卷積層是必須的，與全連接層相同的做法，只是呼叫的函式不同而已。</p>
 <p>  在接下來的範例中，輸入張量為 100x100x3 ，經過兩層 50 個卷積核為 3x3 ，Stride 為 2 ，不使用 Padding 的卷積層後，進行 Flatten ，最後再接入向量長度為 10 的輸出層。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input,Dense,Conv2D</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend <span class="keyword">as</span> K</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SequenceModel</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 輸入層</span></span><br><span class="line">    model_input = Input(shape=(<span class="number">100</span>,<span class="number">100</span>,<span class="number">3</span>), name=<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line">    <span class="comment"># 隱藏層 1 </span></span><br><span class="line">    hidden = Conv2D(<span class="number">50</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;valid&#x27;</span>,name=<span class="string">&#x27;hidden_1&#x27;</span>)(model_input)</span><br><span class="line">    <span class="comment"># 隱藏層 2 </span></span><br><span class="line">    hidden = Conv2D(<span class="number">50</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, padding=<span class="string">&#x27;valid&#x27;</span>,name=<span class="string">&#x27;hidden_2&#x27;</span>)(model_input)</span><br><span class="line">    <span class="comment"># Flatten</span></span><br><span class="line">    Flatten_layer = Flatten(name=<span class="string">&#x27;flatten&#x27;</span>)(hidden)</span><br><span class="line">    <span class="comment"># 輸出層 </span></span><br><span class="line">    model_output = Dense(<span class="number">10</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>,name=<span class="string">&quot;output&quot;</span>)(Flatten_layer)</span><br><span class="line"></span><br><span class="line">    model = Model(inputs=[model_input], outputs=[model_output])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
