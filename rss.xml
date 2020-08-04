@@ -5,12 +5,92 @@
         <link>https://nineko.github.io</link>
         <description></description>
         <language>zh-TW</language>
-        <pubDate>Thu, 30 Jul 2020 16:22:33 +0800</pubDate>
-        <lastBuildDate>Thu, 30 Jul 2020 16:22:33 +0800</lastBuildDate>
+        <pubDate>Mon, 03 Aug 2020 15:55:22 +0800</pubDate>
+        <lastBuildDate>Mon, 03 Aug 2020 15:55:22 +0800</lastBuildDate>
         <category>QT</category>
         <category>DNN</category>
         <category>Computer Vision</category>
         <category>Pose Estimation</category>
+        <item>
+            <guid isPermalink="true">https://nineko.github.io/2020/08/03/Note-BasicSequenceModel/</guid>
+            <title>[筆記]序列模型(1)-基本序列模型</title>
+            <link>https://nineko.github.io/2020/08/03/Note-BasicSequenceModel/</link>
+            <category>DNN</category>
+            <pubDate>Mon, 03 Aug 2020 15:55:22 +0800</pubDate>
+            <description><![CDATA[ &lt;h1&gt;目錄&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;基本序列模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;多尺度架構&lt;/p&gt;
+&lt;p&gt;捷徑架構&lt;/p&gt;
+&lt;h1&gt;基本序列模型&lt;/h1&gt;
+&lt;p&gt;  序列模型為建構深度學習網路時最直觀也最簡便的方式，在大多數時候，序列模型往往能夠讓你在解決問題上提供一個初步的解決方案。&lt;/p&gt;
+&lt;p&gt;不過儘管它如此單純，依舊值得好好研究，在本篇中將會從最基本的開始說明，也就是沒有任何特別操作，單純一層疊一層的方式來建構深度學習網路。&lt;/p&gt;
+&lt;p&gt;這種方式在初期被大量使用，它方便架設，也很容易理解，但是它因簡單的架構，無法處理太過於複雜的特徵，也沒有任何機制去降低計算量，可說是有利有弊。&lt;/p&gt;
+&lt;h2&gt;建構&lt;/h2&gt;
+&lt;h3&gt;全連接層&lt;/h3&gt;
+&lt;p&gt;在這個筆記裡，範例皆為 Keras 實做版本，Keras 版本為 2.4.3 ，基底 Tensorflow 版本為 2.3.0 。&lt;/p&gt;
+&lt;p&gt;假設我們想要建構一個輸入長度為 100 的向量，經過兩層輸出為 50 的隱藏層後，最後輸出長度為 10 的向量。&lt;/p&gt;
+&lt;p&gt;在 Keras 中，我們可以使用很簡單的方式來建構一個序列模型。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import tensorflow as tf
+from keras.models import Model
+from keras.layers import Input,Dense
+from keras import backend as K
+
+def SequenceModel():
+
+    # 輸入層
+    model_input = Input(shape=(100), name=&#39;input&#39;)
+    # 隱藏層 1 
+    hidden = Dense(50, activation=&#39;sigmoid&#39;,name=&amp;quot;hidden_1&amp;quot;)(model_input)
+    # 隱藏層 2 
+    hidden = Dense(50, activation=&#39;sigmoid&#39;,name=&amp;quot;hidden_2&amp;quot;)(hidden)
+    # 輸出層 
+    model_output = Dense(10, activation=&#39;sigmoid&#39;,name=&amp;quot;output&amp;quot;)(hidden)
+
+    model = Model(inputs=[model_input], outputs=[model_output])
+
+    return model
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;  可以看到由 Keras 建構只需要專心建構網路的架構，而不需要做 Weight 及 Bias 的數量及初始化定義，它會以預設的參數進行建構，若要修改也可以帶入引數進行設定。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;keras.layers.Dense(units, 
+                   activation=None, 
+                   use_bias=True, 
+                   kernel_initializer=&#39;glorot_uniform&#39;, bias_initializer=&#39;zeros&#39;, 
+                   kernel_regularizer=None, 
+                   bias_regularizer=None, 
+                   activity_regularizer=None, 
+                   kernel_constraint=None, 
+                   bias_constraint=None)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;若要了解更詳細的設定可以查看 &lt;a href=&#34;https://keras.io/api/layers/core_layers/dense/&#34;&gt;Keras 手冊&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;卷積層&lt;/h3&gt;
+&lt;p&gt;  若要建構一個 DNN ，卷積層是必須的，與全連接層相同的做法，只是呼叫的函式不同而已。&lt;/p&gt;
+&lt;p&gt;  在接下來的範例中，輸入張量為 100x100x3 ，經過兩層 50 個卷積核為 3x3 ，Stride 為 2 ，不使用 Padding 的卷積層後，進行 Flatten ，最後再接入向量長度為 10 的輸出層。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import tensorflow as tf
+from keras.models import Model
+from keras.layers import Input,Dense,Conv2D
+from keras import backend as K
+
+def SequenceModel():
+
+    # 輸入層
+    model_input = Input(shape=(100,100,3), name=&#39;input&#39;)
+    # 隱藏層 1 
+    hidden = Conv2D(50, (3, 3), activation=&#39;relu&#39;, padding=&#39;valid&#39;,name=&#39;hidden_1&#39;)(model_input)
+    # 隱藏層 2 
+    hidden = Conv2D(50, (3, 3), activation=&#39;relu&#39;, padding=&#39;valid&#39;,name=&#39;hidden_2&#39;)(model_input)
+    # Flatten
+    Flatten_layer = Flatten(name=&#39;flatten&#39;)(hidden)
+    # 輸出層 
+    model_output = Dense(10, activation=&#39;sigmoid&#39;,name=&amp;quot;output&amp;quot;)(Flatten_layer)
+
+    model = Model(inputs=[model_input], outputs=[model_output])
+
+    return model
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同樣，這只是最基本的應用，若要更進階的使用請詳看 &lt;a href=&#34;https://keras.io/api/layers/convolution_layers/&#34;&gt;Keras 手冊&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;  以上，我們已經知道該怎麼建構卷積層及全連接層，使用這兩者已經可以建構一個影像辨識的應用，像是一開始的 AlexNet 及 VGG 系列都是使用單純的卷積加上全連接層建構而成的，接下來，你可以建構自己的架構嘗試進行影像辨識，可以使用&lt;a href=&#34;http://yann.lecun.com/exdb/mnist/&#34;&gt;手寫辨識 MINST&lt;/a&gt; 或是 &lt;a href=&#34;https://www.kaggle.com/c/dogs-vs-cats&#34;&gt;Kaggle 的 Dogs v.s Cats&lt;/a&gt; 進行練習。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://nineko.github.io/2020/07/30/MyPaper/</guid>
             <title>Training Deep Networks with Synthetic Data for Textureless Object Pose Estimation</title>
