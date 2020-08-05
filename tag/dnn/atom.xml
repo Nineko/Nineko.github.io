@@ -13,9 +13,9 @@
         <title>[筆記]序列模型(2)-多尺度架構</title>
         <link rel="alternate" href="https://nineko.github.io/2020/08/04/Note-Multi-Scale/"/>
         <content type="html">&lt;h1&gt;目錄&lt;/h1&gt;
-&lt;p&gt;基本序列模型&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://nineko.github.io/2020/08/03/Note-BasicSequenceModel/&#34;&gt;基本序列模型&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;多尺度架構&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;捷徑架構&lt;/p&gt;
+&lt;p&gt;Residual &amp;amp; Dense&lt;/p&gt;
 &lt;h1&gt;多尺度架構&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;  多尺度架構能夠在 GoogLeNet 中的 Inception 架構中廣泛看到，其概念想法為利用不同卷積核大小的卷積層來給予網路更多的選擇去擷取適當的特徵，在架構上，我們能夠把多尺度架構分成兩個步驟──分散及匯集；分散指的是將輸入分散至不同大小卷積核的卷積層，匯集則是將不同卷積層的結果重新組裝成一個張量，所以在進行卷積計算時，會利用 Padding 來確保輸出張量的長寬是一致的，圖解的話像是這種感覺。&lt;/p&gt;
@@ -39,8 +39,8 @@
         <link rel="alternate" href="https://nineko.github.io/2020/08/03/Note-BasicSequenceModel/"/>
         <content type="html">&lt;h1&gt;目錄&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;基本序列模型&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;多尺度架構&lt;/p&gt;
-&lt;p&gt;捷徑架構&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://nineko.github.io/2020/08/04/Note-Multi-Scale/&#34;&gt;多尺度架構&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Residual &amp;amp; Dense&lt;/p&gt;
 &lt;h1&gt;基本序列模型&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;  序列模型為建構深度學習網路時最直觀也最簡便的方式，在大多數時候，序列模型往往能夠讓你在解決問題上提供一個初步的解決方案。&lt;/p&gt;
