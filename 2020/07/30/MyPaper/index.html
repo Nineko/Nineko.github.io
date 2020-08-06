@@ -146,25 +146,35 @@
         </div>
 
         <div class="article-content markdown-body">
-            <p>碩士研究成果，不過目前因其他因素，無法公開全文，也不適合作太詳細的說明，還請見諒<br>
+            <p>  碩士研究成果，不過目前因其他因素，無法公開全文，也不適合作太詳細的說明，還請見諒<br>
 最晚公開時間 2025.01</p>
-<h1>論文連結</h1>  
+<h1>論文連結</h1>
+<hr>
 <p><a target="_blank" rel="noopener" href="https://drive.google.com/open?id=14RATn-h3gV4wIrBbZ2rxjERyxK64EEQM">https://drive.google.com/open?id=14RATn-h3gV4wIrBbZ2rxjERyxK64EEQM</a><br>
 <a target="_blank" rel="noopener" href="https://github.com/Nineko/Deep-Learning_Training-Deep-Networks-with-Synthetic-Data-for-Textureless">Github Link</a></p>
 <h1>簡述</h1>
+<hr>
 <h2>問題定義</h2>
-<p>在這個研究中想要解決在工業應用上因傳統視覺伺服的不足而導入深度學習時，所發生的種種問題。<br>
-我們假設視覺系統為一個手眼系統 (左圖)，所以能夠以物體為圓心定義出一個球座標系 (右圖)</p>
+<hr>
+<p>  在這個研究中想要解決在工業應用上因傳統視覺伺服的不足而導入深度學習時，所發生的種種問題，我們專注研究在機器手臂抓取物體的這個動作上，我們主要研究 :</p>
+<ul>
+<li>全數利用合成影像進行訓練對於實際應用的可行性</li>
+<li>異質編碼器架構對於無紋理目標檢測的優勢</li>
+<li>多階段式預測的必要性</li>
+<li>整體系統的實際可行性</li>
+</ul>
+<p>我們假設視覺系統為一個手眼系統 (左圖)，所以能夠以物體為圓心定義出一個球座標系 (右圖)</p>
 <p><img src="eyeonhand.png" alt="image"></p>
-<p>根據此座標系，在我們的研究中主要考慮三個變量 : In-plane Rotation 、 Theta 、 Phi</p>
+<p>  根據此座標系，在我們的研究中主要考慮三個變量 : In-plane Rotation 、 Theta 、 Phi</p>
 <p><img src="ThreePara.gif" alt="image"></p>
 <h2>CAD Simulator</h2>
-<p>同時為了解決訓練資料取得及標定不易的問題，我們撰寫了使用 OpenGL 並在 QT 上進行開發的 CAD 模型模擬器，詳細可以前往我的 CAD-Simulator 專案 (<a target="_blank" rel="noopener" href="https://github.com/Nineko/CAD-Simulator">https://github.com/Nineko/CAD-Simulator</a>)</p>
+<p>  同時為了解決訓練資料取得及標定不易的問題，我們撰寫了使用 OpenGL 並在 QT 上進行開發的 CAD 模型模擬器，詳細可以前往我的 CAD-Simulator 專案 (<a target="_blank" rel="noopener" href="https://github.com/Nineko/CAD-Simulator">https://github.com/Nineko/CAD-Simulator</a>)</p>
 <p><img src="CAD%E6%A8%A1%E5%9E%8B%E7%95%8C%E9%9D%A2.png" alt="image"></p>
 <h2>測試結果</h2>
-<p>在本研究中，我們利用前述的模擬器產生訓練資料進行訓練，並以相同的方式產生測試集對三種物體進行測試，每種物體都產生了約 16000 張圖片進行測試</p>
+<hr>
+<p>  在本研究中，我們利用前述的模擬器產生訓練資料進行訓練，並以相同的方式產生測試集對三種物體進行測試，每種物體都產生了約 16000 張圖片進行測試</p>
 <p><img src="class.jpg" alt="image"></p>
-<p>測試時分成兩個部分，首先為分辨物體及物體定位的結果 :</p>
+<p>  測試時分成兩個部分，首先為分辨物體及物體定位的結果 :</p>
 <table>
 <thead>
 <tr>
@@ -199,7 +209,7 @@
 </tr>
 </tbody>
 </table>
-<p>再來是三個變量的估測結果 :</p>
+<p>  再來是三個變量的估測結果 :</p>
 <table>
 <thead>
 <tr>
