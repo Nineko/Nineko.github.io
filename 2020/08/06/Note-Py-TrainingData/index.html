@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    
+    <title>
+        Note_Py_TrainingData | Nineko&#39;s Blog
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <link rel="shortcut icon" href="/images/favicon.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <script id="hexo-configurations">
+    let CONFIG = {"hostname":"nineko.github.io","root":"/","localsearch":{"enable":true,"trigger":"auto","unescape":false,"preload":false},"themeInfo":{"name":"ILS","version":"1.1.1","author":"XPoet","repository":"https://github.com/XPoet/hexo-theme-ils"}};
+  </script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+<div class="page-template">
+    <div class="page-top">
+        <header class="header-wrapper">
+
+    <div class="header-content">
+
+        <a class="logo-title" href="/">
+            Nineko&#39;s Blog
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        首頁
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        文章總覽
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/about"
+                    >
+                        關於作者
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item">
+                    <a class=""
+                       href="/">首頁</a>
+                </li>
+            
+                <li class="drawer-menu-item">
+                    <a class=""
+                       href="/archives">文章總覽</a>
+                </li>
+            
+                <li class="drawer-menu-item">
+                    <a class=""
+                       href="/about">關於作者</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+    </div>
+
+    <div class="page-middle ">
+
+        <main class="main-content normal-code-theme">
+
+            <div class="main-content-left">
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <h3><a class="title-hover-animation">Note_Py_TrainingData</a></h3>
+        </div>
+
+        <div class="meta-info">
+            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa fa-calendar-o"></i> 2020-08-06 16:53:59
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Note/">Note</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/DNN/">DNN</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+</div>
+        </div>
+
+        <div class="article-content markdown-body">
+            <h1>訓練資料導入</h1>
+<hr>
+<p>紀錄為了能將訓練資料序列化所進行的轉換動作；<br>
+利用 Pandas package 將資料轉換成 Data frame，再以 PKL 檔案格式儲存。</p>
+<h1>資料預處理</h1>
+<hr>
+<p>在本例中以 CAD 模型的圖像資料為例，每個類別中有不同虛擬相機視點的組合，每種組合中都儲存了模型的圖像及模型線框的圖像如下的資料夾結構：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Class 1 --</span><br><span class="line"> model --</span><br><span class="line">  Angle 1--</span><br><span class="line">      img</span><br><span class="line">  Angle 2--</span><br><span class="line">      img</span><br><span class="line"> wireframe --</span><br><span class="line">  Angle 1--</span><br><span class="line">      img</span><br><span class="line">  Angle 2--</span><br><span class="line">      img</span><br><span class="line">Class 2 --</span><br><span class="line">  ... ...</span><br></pre></td></tr></table></figure>
+<p>當然只要有辦法處裡，用任何結構儲存都行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = list(zip(ModelImageList, WireImageList))</span><br><span class="line">shuffle(c)</span><br><span class="line">ModelImageList, WireImageList = zip(*c)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">final_dict = &#123;</span><br><span class="line">  <span class="string">&quot;Model&quot;</span>    : ModelImageList,</span><br><span class="line">  <span class="string">&quot;Wireframe&quot;</span>: WireImageList</span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(final_dict)</span><br><span class="line">df.to_pickle(saveName)</span><br></pre></td></tr></table></figure>
+<p>此為轉換成 PKL 檔案的主要指令<br>
+另外也能夠存成 CSV 檔案<br>
+不過若是儲存的內容屬於多維度的資訊<br>
+使用 PKL 會比較好一些</p>
+<h2 id="訓練時使用pkl檔案"><a class="markdownIt-Anchor" href="#訓練時使用pkl檔案">#</a> 訓練時使用 PKL 檔案</h2>
+<p>使用 keras 的 Sequence 類，能夠建立一個能夠將資料在訓練中依照 batch 數量即時讀入並進入訓練的類別<br>
+基本架構為</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataSequence</span>(<span class="params">Sequence</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, df, batch_size, mode=<span class="string">&#x27;train&#x27;</span></span>):</span></span><br><span class="line">        self.df = df</span><br><span class="line">        self.bsz = batch_size</span><br><span class="line">        self.mode = mode </span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> int(math.ceil(len(self.df) / float(self.bsz)))</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, idx</span>):</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p>df 為前述的 PKL 檔案，能利用 data = pd.read_pickle (PKL_Dir) 進行讀檔後輸入<br>
+讀入的 df 中包含許多資料，在 <strong>init</strong> 中進行進一步的讀取為</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, df, batch_size, mode=<span class="string">&#x27;train&#x27;</span></span>):</span></span><br><span class="line">    self.df = df</span><br><span class="line">    self.bsz = batch_size</span><br><span class="line">    self.mode = mode </span><br><span class="line">    self.Wireframe_list = self.df[<span class="string">&#x27;Wireframe&#x27;</span>].tolist()</span><br><span class="line">    self.Model_list = self.df[<span class="string">&#x27;Model&#x27;</span>].tolist()</span><br><span class="line">    self.indexes = np.arange(len(self.df[<span class="string">&#x27;Model&#x27;</span>].tolist()))</span><br></pre></td></tr></table></figure>
+<p>其中因為本例中 PKL 檔案儲存的為影像的路徑，為 list 資料，所以使用 .tolist () 進行讀取，若儲存的為數值型資料，能夠利用 .values 進行讀取<br>
+此外再新增 on_epoch_end () 使整個 epoch 的資料使用完時，能夠在自動洗亂一次</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_epoch_end</span>(<span class="params">self</span>):</span></span><br><span class="line">    self.indexes = np.arange(len(self.Model_list))</span><br><span class="line">    <span class="keyword">if</span> self.mode == <span class="string">&#x27;train&#x27;</span>:</span><br><span class="line">    np.random.shuffle(self.indexes)</span><br></pre></td></tr></table></figure>
+<p>並新增獲取 batch 內資料的 get_batch_Models () 及 get_batch_Wireframes ()</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_batch_Models</span>(<span class="params">self, idx</span>):</span></span><br><span class="line">    Batch_indexes = self.indexes[idx*self.bsz:(idx+<span class="number">1</span>)*self.bsz]</span><br><span class="line">    Train_list_temp = [self.Model_list[k] <span class="keyword">for</span> k <span class="keyword">in</span> Batch_indexes]</span><br><span class="line">    batch_model = np.array([load_image(im,color_mode=<span class="string">&#x27;rgb&#x27;</span>) <span class="keyword">for</span> im <span class="keyword">in</span> Train_list_temp])</span><br><span class="line">    <span class="keyword">return</span> batch_model</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_batch_Wireframes</span>(<span class="params">self, idx</span>):</span></span><br><span class="line">    Batch_indexes = self.indexes[idx*self.bsz:(idx+<span class="number">1</span>)*self.bsz]</span><br><span class="line">    Answer_list_temp = [self.Wireframe_list[k] <span class="keyword">for</span> k <span class="keyword">in</span> Batch_indexes]</span><br><span class="line">    <span class="keyword">return</span> np.array([load_image(im,color_mode=<span class="string">&#x27;grayscale&#x27;</span>) <span class="keyword">for</span> im <span class="keyword">in</span> Answer_list_temp])</span><br></pre></td></tr></table></figure>
+<p>最後完善 <strong>getitem</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, idx</span>):</span></span><br><span class="line">    batch_model = self.get_batch_Models(idx)</span><br><span class="line">    batch_wireframe = self.get_batch_Wireframes(idx)</span><br><span class="line">    <span class="keyword">return</span> batch_model,batch_wireframe</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <div class="article-nav">
+            
+                <div class="article-prev">
+                    <a class="prev btn"
+                       rel="prev"
+                       href="/2020/09/04/Python-crawler/"
+                    >
+                        <i class="fa fa-chevron-left"></i> <span class="post-nav-title-item">[筆記]Python應用-爬蟲</span><span class="post-nav-item">上一篇</span>
+                    </a>
+                </div>
+            
+            
+                <div class="article-next">
+                    <a class="next btn"
+                       rel="next"
+                       href="/2020/08/05/Residual-Dense/"
+                    >
+                        <span class="post-nav-title-item">[筆記]序列模型(3)-Residual &amp; Dense</span><span class="post-nav-item">下一篇</span> <i class="fa fa-chevron-right"></i>
+                    </a>
+                </div>
+            
+        </div>
+
+        <div class="comment-container">
+            <div class="comments-container">
+    
+</div>
+        </div>
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+            
+                <div class="main-content-right">
+                    
+    <div class="sidebar sidebar-post fade-in-down-animation">
+        <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">訓練資料導入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">資料預處理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%93%E7%B7%B4%E6%99%82%E4%BD%BF%E7%94%A8pkl%E6%AA%94%E6%A1%88"><span class="nav-number">2.1.</span> <span class="nav-text"> 訓練時使用 PKL 檔案</span></a></li></ol></li></ol>
+    </div>
+</div>
+    </div>
+
+                </div>
+            
+
+        </main>
+
+        <div class="sidebar-tools">
+            <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fa fa-search"></i>
+            </li>
+            
+<script src="/js/local-search.js"></script>
+
+        
+        <li class="mode-toggle">
+            <i class="fa fa-moon-o"></i>
+        </li>
+        
+            <li class="rss">
+                <a href="/undefined" target="_blank"><i class="fa fa-rss"></i></a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <div class="scroll-to-top">
+                <ul>
+                    <li>
+                        <!--<i class="fa fa-caret-up"></i>-->
+                        <span class="scroll-percent"></span>
+                    </li>
+                </ul>
+            </div>
+        
+    </div>
+
+    <div class="page-bottom">
+        <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy; 2020 <a href="/">Jing-Rong,Lai</a>
+        </div>
+        <div class="theme-info info-item">
+             <a target="_blank" href="https://hexo.io">Hexo</a>  | 主题 <a
+                    href="https://github.com/XPoet/hexo-theme-ils" target="_blank">ILS v1.1.1</a>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+</div>
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fa fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜尋..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/main.js"></script>
+<script src="/js/header-shrink.js"></script>
+<script src="/js/toggle-mode.js"></script>
+
+
+
+    
+<script src="/js/scroll-to-top.js"></script>
+
+
+
+
+
+    
+        
+<script src="/js/code-copy.js"></script>
+
+    
+
+    
+        
+<script src="/lib/anime.min.js"></script>
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+
+<script src="/js/hexo_resize_image.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    
+    <title>
+        [筆記]Python應用-爬蟲 | Nineko&#39;s Blog
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <link rel="shortcut icon" href="/images/favicon.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <script id="hexo-configurations">
+    let CONFIG = {"hostname":"nineko.github.io","root":"/","localsearch":{"enable":true,"trigger":"auto","unescape":false,"preload":false},"themeInfo":{"name":"ILS","version":"1.1.1","author":"XPoet","repository":"https://github.com/XPoet/hexo-theme-ils"}};
+  </script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+<div class="page-template">
+    <div class="page-top">
+        <header class="header-wrapper">
+
+    <div class="header-content">
+
+        <a class="logo-title" href="/">
+            Nineko&#39;s Blog
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        首頁
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        文章總覽
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/about"
+                    >
+                        關於作者
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item">
+                    <a class=""
+                       href="/">首頁</a>
+                </li>
+            
+                <li class="drawer-menu-item">
+                    <a class=""
+                       href="/archives">文章總覽</a>
+                </li>
+            
+                <li class="drawer-menu-item">
+                    <a class=""
+                       href="/about">關於作者</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+    </div>
+
+    <div class="page-middle ">
+
+        <main class="main-content normal-code-theme">
+
+            <div class="main-content-left">
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <h3><a class="title-hover-animation">[筆記]Python應用-爬蟲</a></h3>
+        </div>
+
+        <div class="meta-info">
+            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa fa-calendar-o"></i> 2020-09-04 14:06:56
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Note/">Note</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+</div>
+        </div>
+
+        <div class="article-content markdown-body">
+            <h1>何謂爬蟲</h1>
+<hr>
+<p>  爬蟲以白話來說的話就是一個從網頁上抓資料下來的動作，舉一個例子來說 : NVIDIA 最近出了新型號的顯示卡，那麼舊型號勢必會跌價，你今天想研究它跌價的趨勢，並試圖預估最低點撿個便宜，所以你每天都上露天去記錄金額的變化，但是每天上去記錄實在是太麻煩了，不僅容易忘記，記錄還得花上一段時間，面對這種情形，使用爬蟲便會是一個很好的解決方案，爬蟲的用意就是為了解決這種重複性高，大量且單調的工作，有了爬蟲工具，資料科學家便能更方便的蒐集資料，能夠專心的投入在分析上。</p>
+<h1>Python上的爬蟲</h1>
+<hr>
+<p>  那麼在 Python 上該如何撰寫一個爬蟲程式呢？這方面 Python 為我們帶來了完善的解決方案，只要有 requests 加上 BeautifulSoup 兩個套件便可以進行爬蟲程式的撰寫。</p>
+<h2>requests</h2>
+<hr>
+<p>  requests 套件給予我們在 Python 上能夠操作網頁的基本功能，如 GET、 POST 、 PUT、 DELETE、 HEAD、 OPTIONS、 Cookie 操作等功能，在本章節中主要使用 GET 來獲取網頁中的內容，是爬蟲的第一步。</p>
+<p>安裝 requests :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<p>基本 GET 方法使用 :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">result = requests.get(<span class="string">&#x27;https://nineko.github.io&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(result.text)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler01.png" alt="image"></p>
+<p>  使用 GET 能夠將網頁的程式碼整個拿下來，所有網頁的資訊都在這裡頭，所以接下的的動作就是來解析並過濾出我們所需要的資訊，而這個則需要方才所說的另一個套件，BeautifulSoup。</p>
+<h2>BeautifulSoup</h2>
+<hr>
+<p>  BeautifulSoup 能夠為我們解析 HTML，將其轉換成能夠快速查找資訊的資料結構供後續操作，並提供相應的查找方式，迅速過濾出使用者想要的標籤，可謂是爬蟲的一大利器。</p>
+<p>安裝 requests :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+<p>基本方法使用 :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"></span><br><span class="line">result = requests.get(<span class="string">&#x27;https://nineko.github.io&#x27;</span>)</span><br><span class="line">soup = BeautifulSoup(result, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(soup.prettify())</span><br></pre></td></tr></table></figure>
+<p><img src="crawler02.png" alt="image"></p>
+<p>  不要看打印出來看起來只是稍微改了點縮排而已，但是內部已經建構了一個特別的資料結構，我們可以用 BeautifulSoup 提供的 select 方法來提取標籤內容。</p>
+<p>查找標籤 :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"></span><br><span class="line">result = requests.get(<span class="string">&#x27;https://nineko.github.io&#x27;</span>)</span><br><span class="line">soup = BeautifulSoup(result, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">title = soup.select(<span class="string">&quot;h3.home-article-title&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> title:</span><br><span class="line">  print(t.text)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler03.png" alt="image"></p>
+<p>  你看，只要短短的幾行程式碼便可以把我 Blog 文章的標題濾出，不過看到這的人可能會有個疑問，這個 <code>h3.home-article-title</code>  哪來的？現在的 Chrome 或是我常用的 OperaGX 等瀏覽器都有可以觀看程式碼的方式，像是 Chrome 能夠點 <code>F12</code>  進入或是在你想看的元件上右鍵選單中的檢查元件都可以跳到其程式碼的部分，觀看程式碼便可以得知其目前標籤，這個 <code>h3.home-article-title</code>  便是這麼來的。</p>
+<p><img src="crawler04.png" alt="image"></p>
+<h1>實戰範例</h1>
+<hr>
+<h2>基本單頁</h2>
+<hr>
+<p>  那麼基本工具都準備好了，現在來實戰看看，我們利用一開始的小例子，去露天鎖定 NVIDIA GTX1060 的顯示卡，把商品名與價錢爬下來，GO！</p>
+<p>  首先得先去露天實際搜尋看看整個頁面，檢查一下商品名的標籤。</p>
+<p><img src="crawler05.png" alt="image"></p>
+<p>那我們就以剛剛的思路試著爬爬看</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"></span><br><span class="line">result = requests.get(<span class="string">&#x27;https://find.ruten.com.tw/s/?cateid=0011000500210001&amp;q=GTX1060&#x27;</span>)</span><br><span class="line">soup = BeautifulSoup(result, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">title = soup.select(<span class="string">&quot;h5.prod_name&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> title:</span><br><span class="line">  print(t)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler06.png" alt="image"></p>
+<p>  什麼！被拒絕了，不過別緊張，這是因為很多網站都有著檢查 User-Agent 的機制，若你不設定 User-Agent 就會被檔下來，所以我們可以見招拆招，它需要 User-Agent ，我們就給它一個，在這邊我們可以使用自己瀏覽器的 User-Agent ，像我的就是 <code>Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36</code> ，或是使用 Python 的  <code>fake-useragent</code>  套件產生，再者也可以使用現有的一些 User-Agent，像是 Google 就有 GoogleBot 可以使用，我們接下來就使用 GoogleBot 來進行，所以對程式碼進行一些修改後。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># New</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;GoogleBot&#x27;</span>&#125;</span><br><span class="line"><span class="comment"># Add headers</span></span><br><span class="line">result = requests.get(<span class="string">&#x27;https://find.ruten.com.tw/s/?cateid=0011000500210001&amp;q=GTX1060&#x27;</span>,headers=headers)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler07.png" alt="image"></p>
+<p>  很好！順利爬到了，不過我們可以看到每個商品的  <code>&lt;h5&gt;</code>  中都還包了兩個  <code>&lt;span&gt;</code>  以及一個  <code>&lt;a&gt;</code>  標籤，我們需要的商品名是在  <code>&lt;a&gt;</code>  標籤中，所以我們將 select 的條件再往下一層。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">title = soup.select(<span class="string">&quot;h5.prod_name a&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler08.png" alt="image"></p>
+<p>  這樣一來我們就可以只獲取  <code>&lt;a&gt;</code>  標籤中的內容，成功的爬到商品名稱，同理，價格的部分也可以以這樣的方式爬到，完整的程式碼如下，其中  <code>price_list = price_list[1::2]</code>  的理由是因為爬下來的資料每筆會有兩個價格，因為有些商品價格會是一個範圍，所以這邊使用  <code>[1::2]</code>  來取偶數項，也就是範圍中較大的價格值 :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;GoogleBot&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">result = requests.get(<span class="string">&#x27;https://find.ruten.com.tw/s/?cateid=0011000500210001&amp;q=GTX1060&#x27;</span>,headers=headers)</span><br><span class="line">soup = BeautifulSoup(result.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"></span><br><span class="line">title = soup.select(<span class="string">&#x27;h5.prod_name a&#x27;</span>)</span><br><span class="line">price = soup.select(<span class="string">&quot;ul.price_box li.about span.price&quot;</span>)</span><br><span class="line"></span><br><span class="line">title_list = []</span><br><span class="line">price_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> title:</span><br><span class="line">    title_list.append(t.text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> price:</span><br><span class="line">    price_list.append(p.text)</span><br><span class="line"></span><br><span class="line">price_list = price_list[<span class="number">1</span>::<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t,p <span class="keyword">in</span> zip(title_list,price_list) :</span><br><span class="line"> print(t+<span class="string">&quot;\t&quot;</span>+p)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler09.png" alt="image"></p>
+<h2>進階強化</h2>
+<hr>
+<p>  剛剛我們成功爬下來單頁的資料，接下來要更加進階了，我們試著爬多頁資料，首先先來看看到第 2 頁網址會發生甚麼變化 :</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">#第一頁</span></span><br><span class="line">https://find.ruten.com.tw/s/?cateid=0011000500210001&amp;q=GTX1060&amp;sort=prc%2Fac</span><br><span class="line"><span class="comment">#第二頁</span></span><br><span class="line">https://find.ruten.com.tw/s/?cateid=0011000500210001&amp;p=2&amp;q=GTX1060&amp;sort=prc%2Fac</span><br></pre></td></tr></table></figure>
+<p>  可以明顯的看到多了  <code>&amp;p=2</code>  這個參數，試著調整這個數值的確帶我們到了其他頁，所以我們現在知道  <code>&amp;p=2</code>  代表著第二頁，藉由改變數字可以跳轉至其他頁，那麼問題就簡單了，我們可以修改  <code>requests.get</code>  的網址來獲取其他頁的訊息。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;GoogleBot&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://find.ruten.com.tw/s/?cateid=0011000500210001&amp;p=&quot;</span></span><br><span class="line">page= <span class="number">1</span></span><br><span class="line">url2= <span class="string">&quot;&amp;q=GTX1060&amp;sort=prc%2Fac&quot;</span></span><br><span class="line">title_list = []</span><br><span class="line">price_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line"></span><br><span class="line">    result = requests.get(url+str(page)+url2,headers=headers)</span><br><span class="line">    <span class="keyword">if</span> result.status_code == requests.codes.ok :</span><br><span class="line">     soup = BeautifulSoup(result.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">     title = soup.select(<span class="string">&#x27;h5.prod_name a&#x27;</span>)</span><br><span class="line">     price = soup.select(<span class="string">&quot;ul.price_box li.about span.price&quot;</span>)</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span> t <span class="keyword">in</span> title:</span><br><span class="line">      title_list.append(t.text)</span><br><span class="line">     <span class="keyword">for</span> p <span class="keyword">in</span> price:</span><br><span class="line">      price_list.append(p.text)</span><br><span class="line">     page+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">     <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">price_list = price_list[<span class="number">1</span>::<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t,p <span class="keyword">in</span> zip(title_list,price_list) :</span><br><span class="line"> print(t+<span class="string">&quot;\t&quot;</span>+p)</span><br></pre></td></tr></table></figure>
+<p>  在這邊我們做了幾點修改，首先是  <code>requests.get</code>  傳入 URL 的組合字串，藉由改變  <code>page</code>  參數來獲取其他頁資料，再來為了遍歷所有頁，使用  <code>while</code>  來持續遍歷，並藉由  <code>requests.get</code>  的  <code>status_code</code>  ，成功為  <code>200</code>  做為是否繼續的判斷點，如此一來便可以將所有搜尋資料通通都爬下來了，接下來為了方便分析，我們要將其存成檔案，我們可以利用  <code>csv</code>  套件將其存成 .csv 檔，或是使用  <code>pandas</code>  套件處理，我們這裡採用  <code>pandas</code>  來進行處理， <code>pandas</code>  功能強大，雖然我們今天只要處理兩欄的小資料，但若之後需要處理較多欄位的大資料會比較方便， <code>pandas</code>  的安裝及使用我會到 深度學習的訓練資料準備 的文章內再解說，這邊就直接使用。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;商品名&#x27;</span>:title_list,</span><br><span class="line">                   <span class="string">&#x27;價格&#x27;</span>  :price_list&#125;)</span><br><span class="line">df.to_csv(<span class="string">&#x27;GTX1060.csv&#x27;</span>, encoding=<span class="string">&#x27;utf_8_sig&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="crawler10.png" alt="image"></p>
+
+        </div>
+
+        <div class="article-nav">
+            
+            
+                <div class="article-next">
+                    <a class="next btn"
+                       rel="next"
+                       href="/2020/08/06/Note-Py-TrainingData/"
+                    >
+                        <span class="post-nav-title-item">Note_Py_TrainingData</span><span class="post-nav-item">下一篇</span> <i class="fa fa-chevron-right"></i>
+                    </a>
+                </div>
+            
+        </div>
+
+        <div class="comment-container">
+            <div class="comments-container">
+    
+</div>
+        </div>
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+            
+                <div class="main-content-right">
+                    
+    <div class="sidebar sidebar-post fade-in-down-animation">
+        <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">何謂爬蟲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Python上的爬蟲</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">BeautifulSoup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">實戰範例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">基本單頁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">進階強化</span></a></li></ol></li></ol>
+    </div>
+</div>
+    </div>
+
+                </div>
+            
+
+        </main>
+
+        <div class="sidebar-tools">
+            <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fa fa-search"></i>
+            </li>
+            
+<script src="/js/local-search.js"></script>
+
+        
+        <li class="mode-toggle">
+            <i class="fa fa-moon-o"></i>
+        </li>
+        
+            <li class="rss">
+                <a href="/undefined" target="_blank"><i class="fa fa-rss"></i></a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <div class="scroll-to-top">
+                <ul>
+                    <li>
+                        <!--<i class="fa fa-caret-up"></i>-->
+                        <span class="scroll-percent"></span>
+                    </li>
+                </ul>
+            </div>
+        
+    </div>
+
+    <div class="page-bottom">
+        <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy; 2020 <a href="/">Jing-Rong,Lai</a>
+        </div>
+        <div class="theme-info info-item">
+             <a target="_blank" href="https://hexo.io">Hexo</a>  | 主题 <a
+                    href="https://github.com/XPoet/hexo-theme-ils" target="_blank">ILS v1.1.1</a>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+</div>
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fa fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜尋..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/main.js"></script>
+<script src="/js/header-shrink.js"></script>
+<script src="/js/toggle-mode.js"></script>
+
+
+
+    
+<script src="/js/scroll-to-top.js"></script>
+
+
+
+
+
+    
+        
+<script src="/js/code-copy.js"></script>
+
+    
+
+    
+        
+<script src="/lib/anime.min.js"></script>
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+
+<script src="/js/hexo_resize_image.js"></script>
+</body>
+</html>

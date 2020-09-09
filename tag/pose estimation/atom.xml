@@ -8,6 +8,7 @@
     <category term="QT" />
     <category term="Computer Vision" />
     <category term="Pose Estimation" />
+    <category term="Python" />
     <entry>
         <id>https://nineko.github.io/2020/07/30/MyPaper/</id>
         <title>Training Deep Networks with Synthetic Data for Textureless Object Pose Estimation</title>
